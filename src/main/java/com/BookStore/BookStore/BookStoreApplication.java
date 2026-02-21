@@ -85,10 +85,25 @@ public class BookStoreApplication {
 							System.out.println(book);
 						}
 
-
 					}
 
 					case 6 -> {
+
+						findAllBooks(bookstoreDao);
+						System.out.println("Enter the ID of the book you want to delete");
+
+						int bookId = scanner.nextInt();
+
+						Book tempBook = bookstoreDao.findById(bookId);
+						bookId = tempBook.getId();
+
+						System.out.println("Deleting Book: " + tempBook.getBookTitle() + " by " + tempBook.getAuthorName() );
+
+						bookstoreDao.deleteBook(bookId);
+
+					}
+
+					case 7 -> {
 						System.exit(0);
 					}
 					default -> System.out.println("Invalid option, please try again.");

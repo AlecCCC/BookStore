@@ -49,4 +49,11 @@ public class bookStoreDaoImpl implements bookStoreDao {
     public void updateBook(Book book) {
         entityManager.merge(book);
     }
+
+    @Override
+    @Transactional
+    public void deleteBook(Integer id) {
+        Book book = entityManager.find(Book.class, id);
+        entityManager.remove(book);
+    }
 }
